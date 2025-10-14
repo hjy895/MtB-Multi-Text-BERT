@@ -303,7 +303,6 @@ If you use this framework in your research, please cite:
 ```bibtex
 @article{clinical_topic_modeling_2025,
   title={Integrating Clinical Topic Modeling: A BERT-Based Framework for Medical Risk Prediction},
-  author={Your Name},
   journal={Conference},
   year={2025},
   doi={your-doi}
