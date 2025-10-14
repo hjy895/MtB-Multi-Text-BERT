@@ -1,0 +1,131 @@
+# Clinical Topic Modeling Framework Configuration
+
+# Data Configuration
+data:
+  input_file: "data/clinical_dataset.csv"
+  target_column: "target_label"
+  patient_id_column: "patient_id"
+  test_size: 0.2
+  random_state: 42
+  
+# Clinical Topic Configuration
+clinical_topics:
+  enable: true
+  
+  # Define your clinical features here
+  feature_columns:
+    - "feature1_max"
+    - "feature2_min" 
+    - "feature3_avg"
+    - "feature4_range"
+    - "feature5_std"
+  
+  # Define topic extraction rules
+  # Format: topic_name: {column: str, operator: str, threshold: float}
+  topic_definitions:
+    elevated_feature1:
+      column: "feature1_max"
+      operator: ">"
+      threshold: 1.2
+    reduced_feature2:
+      column: "feature2_min"
+      operator: "<"
+      threshold: 90
+    high_feature3:
+      column: "feature3_avg"
+      operator: ">"
+      threshold: 5.0
+    low_feature4:
+      column: "feature4_range"
+      operator: "<"
+      threshold: 150
+    abnormal_feature5:
+      column: "feature5_std"
+      operator: ">"
+      threshold: 94
+    
+# Feature Extraction Configuration
+feature_extraction:
+  levels: ["word", "sentence", "paragraph"]
+  
+  # Number of elements to extract at each level
+  word_extraction_sizes: [5, 10, 15, 20]
+  sentence_extraction_sizes: [1, 2, 3]
+  paragraph_extraction_sizes: [0, 1, 2]
+  
+  # Text preprocessing options
+  preprocessing:
+    lowercase: true
+    remove_punctuation: true
+    remove_stopwords: true
+    stemming: true
+
+# Model Configuration
+models:
+  # BERT Configuration
+  bert:
+    model_name: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
+    max_length: 128
+    batch_size: 16
+    learning_rate: 2e-5
+    num_epochs: 3
+    warmup_steps: 100
+    weight_decay: 0.01
+    
+  # Classical Models Configuration
+  classical:
+    enable_all: true
+    models:
+      - "LogisticRegression"
+      - "SVC"
+      - "RandomForestClassifier"
+      - "GradientBoostingClassifier"
+      - "MultinomialNB"
+      - "DecisionTreeClassifier"
+      
+  # Ensemble Models Configuration  
+  ensemble:
+    enable_all: true
+    models:
+      - "VotingClassifier"
+      - "BaggingClassifier"
+      - "AdaBoostClassifier"
+      - "ExtraTreesClassifier"
+
+# Evaluation Configuration
+evaluation:
+  task_type: "binary"  # Options: "binary", "multiclass"
+  num_classes: 2
+  cv_folds: 5
+  cv_strategy: "stratified"
+  random_state: 42
+  
+  # Metrics to compute
+  metrics:
+    - "accuracy"
+    - "precision" 
+    - "recall"
+    - "f1"
+    - "roc_auc"
+    - "pr_auc"
+  
+  # Save detailed results
+  save_results: true
+  results_dir: "results/"
+  
+# Logging Configuration
+logging:
+  level: "INFO"
+  file: "logs/clinical_topic_modeling.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Hardware Configuration
+hardware:
+  use_gpu: true
+  gpu_device: 0
+  num_workers: 4
+  
+# Reproducibility
+reproducibility:
+  seed: 42
+  deterministic: true
