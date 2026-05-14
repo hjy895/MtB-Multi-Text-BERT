@@ -68,30 +68,6 @@ config = {
 framework = ClinicalTopicModelingFramework(config)
 results = framework.run_complete_evaluation(your_data, your_labels)
 ```
-
-## 📊 Data Format
-
-Your dataset should be in CSV format with the following structure:
-
-```csv
-patient_id,feature1_max,feature2_min,feature3_avg,target_label
-1,1.2,95,4.5,0
-2,2.1,85,6.2,1
-3,0.9,100,3.8,0
-...
-```
-
-### Required Columns:
-- **Patient ID**: Unique identifier for each patient
-- **Clinical Features**: Numerical values for clinical measurements
-- **Target Label**: Classification target (binary: 0/1 or multi-class: 0/1/2)
-
-### Optional Columns:
-- **Temporal Features**: Time-series clinical data
-- **Categorical Features**: Pre-existing categorical clinical indicators
-
-## ⚙️ Configuration
-
 ### Main Configuration (`config/config.yaml`)
 
 ```yaml
