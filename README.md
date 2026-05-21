@@ -8,7 +8,6 @@ This is the overview of the proposed Multi-Text BERT Framework model for AKI Pre
 This framework enables:
 - **Multi-Text BERT Modeling**: Transform continuous clinical variables into interpretable categorical tokens
 - **Multi-level Feature Extraction**: Extract features at word, sentence, and paragraph levels
-- **BERT-based Classification**: Enhanced BERT architecture with hierarchical pooling
 - **Flexible Evaluation**: Support for both binary and multi-class classification tasks
 
 ## 📋 Features
@@ -114,55 +113,10 @@ evaluation:
 ## 🤖 Supported Models
 
 ### Classical Models
-- Logistic Regression
-- Support Vector Machines (SVC, LinearSVC)
-- Naive Bayes (Multinomial, Bernoulli, Complement)
-- Decision Trees
-- K-Nearest Neighbors
-- Neural Networks (MLP)
 
 ### Ensemble Models
-- Random Forest
-- Gradient Boosting
-- Extra Trees
-- AdaBoost
-- XGBoost (optional)
-- LightGBM (optional)
-- CatBoost (optional)
 
-### BERT-based Models
-- Custom BERT with Hierarchical Pooling
-
-## 📈 Evaluation Metrics
-
-The framework supports comprehensive evaluation:
-
-- **Classification Metrics**: Accuracy, Precision, Recall, F1-score
-- **ROC Analysis**: AUC-ROC, AUC-PRC
-- **Cross-validation**: Stratified K-fold
-- **Statistical Analysis**: Confidence intervals, significance testing
-
-## 🔧 Customization
-
-### Adding Custom Clinical Topics
-
-```python
-def create_custom_topics(row_dict):
-    """Define your own clinical topic extraction logic"""
-    features = []
-    
-    # Example: Custom condition detection
-    if row_dict.get('custom_feature', 0) > threshold:
-        features.append('custom_condition')
-    
-    # Add more conditions as needed
-    
-    return ' '.join(features) if features else 'normal'
-
-# Register custom topic extractor
-topic_extractor = ClinicalTopicExtractor()
-topic_extractor.set_custom_extractor(create_custom_topics)
-```
+### LLM-based Models
 
 ### Adding Custom Models
 
@@ -277,10 +231,10 @@ benchmark.generate_report(results, output_path='benchmark_results.html')
 If you use this framework in your research, please cite:
 
 ```bibtex
-@article{clinical_topic_modeling_2025,
-  title={Integrating Clinical Topic Modeling: A BERT-Based Framework for Medical Risk Prediction},
+@article{clinical_topic_modeling_2026,
+  title={MTB},
   journal={Conference},
-  year={2025},
+  year={2026},
   doi={your-doi}
 }
 ```
@@ -291,7 +245,7 @@ We welcome contributions! Thank You.
 
 ## 🙏 Acknowledgments
 
-- Inspired by clinical NLP research and topic modeling techniques
+- Inspired by clinical NLP research
 - Thanks to the open-source community for the foundational libraries
 
 ---
